@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:c="http://java.sun.com/jsp/jstl/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:p="http://primefaces.org/ui">
+ 
+
+  
+  <h:head>
+   <h:outputLink value = "machine-info.xhtml">
+   <p:graphicImage  url="/graphics/back-md.png" styleClass="imageStyle" />
+   </h:outputLink>
+   &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+
+   <h:outputText style="color:red;font-style: italic;font-weight:bold" value="#{machine.currentTime()}"/>
+  <p:panel>
+   
+ 
+  <h1>Welcome to Machine Efficiency Monitor System</h1>
+ <p:graphicImage  url="/graphics/download3.png" styleClass="imageStyle" />
+  
+  <br/>
+  <br/>
+ 
+  <h:outputLabel>Comparision Result Chart :</h:outputLabel>
+  <br/>
+  <br/>
+  <br/>
+  <p:outputLabel for="button" value="Select a date to compare:" />
+  <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
+ <br/>
+ <br/>
+  <p:dataTable var="car" value="#{machine.pastEffectiveMachine}">
+   
+    <p:column headerText="Machine Id" width="50px">
+        <h:outputText value="#{car.machineID}" />
+    </p:column>
+
+    <p:column headerText="TimePeriod " width="50px">
+        <h:outputText value="#{car.timePeriod}" />
+    </p:column>
+
+    <p:column headerText="Output" width="50px">
+        <h:outputText value="#{car.output}" />
+    </p:column>
+
+    <p:column headerText="Date" width="50px">
+        <h:outputText value="#{car.date}" />
+    </p:column>
+</p:dataTable>
+
+<br/>
+ <br/>
+ <p:chart type="bar" model="#{machine.barModel2}" style="height:300px"/> 
+  </p:panel>
+  </h:head>
+ </ui:composition>

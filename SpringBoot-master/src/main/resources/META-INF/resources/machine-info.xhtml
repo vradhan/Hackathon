@@ -1,0 +1,75 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:c="http://java.sun.com/jsp/jstl/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:p="http://primefaces.org/ui">
+ 
+  <h:head>
+  <h:outputLink value = "machine-info.xhtml">
+   <p:graphicImage  url="/graphics/home.png" styleClass="imageStyle" />
+   </h:outputLink>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+
+   <h:outputText style="color:red;font-style: italic;font-weight:bold" value="#{machine.currentTime()}"/>
+  <p:panel>
+  <p:growl id="message" showDetail="true" />
+  <h1>Welcome to Machine Efficiency Monitor System</h1>
+ <p:graphicImage  url="/graphics/download1.png" styleClass="imageStyle" />
+  
+  <br/>
+  <br/>
+ <h:outputLabel>Today's Machine Output Data:</h:outputLabel>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+ <h:outputLink value = "info2.xhtml" style="color:blue;font-style: italic;" >Compare past Data with Today's OutPut data :</h:outputLink> 
+ <br/>
+ <br/>
+ <p:toolbar>
+ <f:facet name="left">
+            <p:commandButton type="button" value="Add Entry"  ajax="true" icon="ui-icon-document" update="message">
+            <p:confirm header="Confirmation"  icon="ui-icon-alert" />
+            </p:commandButton>
+             <p:commandButton type="button" title="Delete" icon="ui-icon-trash" />
+  
+  <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+  <h:outputLabel value="Machine ID"/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<p:inputText /><br/><br/>
+  <h:outputLabel value="Time Period"/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<p:inputText/><br/><br/>
+  <h:outputLabel value="Output"/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<p:inputText /><br/><br/>
+  <h:outputLabel value="Date"/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<p:inputText /><br/><br/>
+        <p:commandButton value="Save" actionListener="#{machine.save}" type="button" update="message tableId" styleClass="ui-confirmdialog-yes" icon="ui-icon-disk" />
+        </p:confirmDialog>
+   </f:facet>
+ </p:toolbar>
+ <p:dataTable id="tableId" var="car" value="#{machine.effectiveMachine}">
+   
+    <p:column headerText="Machine Id" width="50px">
+        <h:outputText value="#{car.machineID}" />
+    </p:column>
+
+    <p:column headerText="TimePeriod " width="50px">
+        <h:outputText value="#{car.timePeriod}" />
+    </p:column>
+
+    <p:column headerText="Output" width="50px">
+        <h:outputText value="#{car.output}" />
+    </p:column>
+
+    <p:column headerText="Date" width="50px">
+        <h:outputText value="#{car.date}" />
+    </p:column>
+</p:dataTable>
+
+<br/>
+ <p:chart type="bar" model="#{machine.barModel}" style="height:300px"/> 
+  </p:panel>
+  </h:head>
+ </ui:composition>
