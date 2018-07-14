@@ -1,8 +1,8 @@
 import React from 'react'
 import { StackedAreaChart } from 'react-native-svg-charts'
+import * as shape from 'd3-shape'
 
-
-export default class StackedAreaChart extends React.PureComponent {
+export default class StackedAreaChartReport extends React.PureComponent {
 
     render() {
 

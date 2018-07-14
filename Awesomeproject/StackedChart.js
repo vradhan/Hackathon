@@ -1,55 +1,72 @@
-import React from 'react'
-import { StackedBarChart } from 'react-native-svg-charts'
+import React, {Component} from 'react'
+import {TouchableHighlight, StyleSheet, Text, View,Image} from 'react-native'
 
-export default class StackedChart extends React.PureComponent {
 
+export default class StackedChart extends Component {
+    static navigationOptions = ({ navigation }) => {
+        return {
+            title: `Welcome ${navigation.state.params.screen}`,
+        }
+    };
     render() {
 
-        const data = [
-            {
-                month: new Date(2015, 0, 1),
-                apples: 3840,
-                bananas: 1920,
-                cherries: 960,
-                dates: 400,
-                oranges: 400,
-            },
-            {
-                month: new Date(2015, 1, 1),
-                apples: 1600,
-                bananas: 1440,
-                cherries: 960,
-                dates: 400,
-            },
-            {
-                month: new Date(2015, 2, 1),
-                apples: 640,
-                bananas: 960,
-                cherries: 3640,
-                dates: 400,
-            },
-            {
-                month: new Date(2015, 3, 1),
-                apples: 3320,
-                bananas: 480,
-                cherries: 640,
-                dates: 400,
-            },
-        ]
+        const { state, navigate } = this.props.navigation;
+        return (<View style={styles.container}>
+                <Text style={styles.titleText}>{state.params.screen}</Text>
+                <Image source={require('./download3.png')} />
+                <View style={styles.buttonContainer}>
+                    <TouchableHighlight
+                        onPress={() => this.props.navigation.goBack()}
+                        style={[styles.button, {backgroundColor: '#C56EE0'}]}>
+                        <Text style={styles.buttonText}>Go Back</Text>
+                    </TouchableHighlight>
 
-        const colors = [ '#7b4173', '#a55194', '#ce6dbd', '#de9ed6' ]
-        const keys   = [ 'apples', 'bananas', 'cherries', 'dates' ]
-
-        return (
-            <StackedBarChart
-                style={ { height: 200 } }
-                keys={ keys }
-                colors={ colors }
-                data={ data }
-                showGrid={ false }
-                contentInset={ { top: 30, bottom: 30 } }
-            />
+                    <TouchableHighlight
+                        onPress={() => navigate("StackedChartReport", { screen: "StackedChartReport" })}
+                        style={[styles.button, {backgroundColor: '#8E84FB'}]}>
+                        <Text style={styles.buttonText}>Bar Chart</Text>
+                    </TouchableHighlight>
+                    <TouchableHighlight
+                        onPress={() => navigate("StackedAreaChartReport", { screen: "StackedAreaChartReport" })}
+                        style={[styles.button, {backgroundColor: '#8E84FB'}]}>
+                        <Text style={styles.buttonText}>Area Chart</Text>
+                    </TouchableHighlight>
+                    <TouchableHighlight
+                        onPress={() => navigate("XAxisChartReport", { screen: "XAxisChartReport" })}
+                        style={[styles.button, {backgroundColor: '#8E84FB'}]}>
+                        <Text style={styles.buttonText}>XAxis Chart</Text>
+                    </TouchableHighlight>
+                </View>
+            </View>
         )
     }
 
-}
+};
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    titleText: {
+        fontSize: 22
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        marginLeft: 20,
+        marginRight: 20,
+        marginTop: 20
+    },
+    button: {
+        borderRadius: 20,
+        height: 50,
+        flex: 2,
+        margin: 10,
+        justifyContent: 'center'
+    },
+    buttonText: {
+        color: 'white',
+        alignSelf: 'center',
+        fontSize: 18
+    }
+});

@@ -2,7 +2,7 @@ import React from 'react'
 import { LineChart, XAxis, Grid } from 'react-native-svg-charts'
 import { View } from 'react-native'
 
-class XAxisExample extends React.PureComponent {
+export default class XAxisChartReport extends React.PureComponent {
 
     render() {
 
