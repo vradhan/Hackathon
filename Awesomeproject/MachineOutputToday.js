@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
-import { Table, TableWrapper, Row } from 'react-native-table-component';
+import { Table, TableWrapper, Row, Rows } from 'react-native-table-component';
 import { List, ListItem } from 'react-native-elements';
 
 export default class MachineOutputToday extends Component {
@@ -8,60 +8,27 @@ export default class MachineOutputToday extends Component {
         super(props);
         this.state = {
             tableHead: ['MachineID', 'Time Period', 'Output', 'Date'],
-            widthArr: [40, 60, 80, 100]
+            tableData: [
+                ['001', '9-10', '26', '15-Jul-2018'],
+                ['001', '10-11', '40', '15-Jul-2018'],
+                ['001', '11-12', '32', '15-Jul-2018'],
+                ['001', '12-13', '30', '15-Jul-2018']
+            ]
         }
     }
 
-   /* const list = [
-        {
-            name: 'Amy Farha',
-            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-            subtitle: 'Vice President'
-        },
-        {
-            name: 'Chris Jackson',
-            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-            subtitle: 'Vice Chairman'
-        },
-        ... // more items
-    ]*/
-
-
     render() {
         const state = this.state;
-        const tableData = [];
-        for (let i = 0; i < 4; i += 1) {
-            const rowData = [];
-            for (let j = 0; j < 9; j += 1) {
-                rowData.push(`${i}${j}`);
-            }
-            tableData.push(rowData);
-        }
+
 
         return (
             <View style={styles.container}>
-                <ScrollView horizontal={true}>
-                    <View>
-                        <Table borderStyle={{borderColor: '#C1C0B9'}}>
-                            <Row data={state.tableHead} widthArr={state.widthArr} style={styles.header} textStyle={styles.text}/>
-                        </Table>
-                        <ScrollView style={styles.dataWrapper}>
-                            <Table borderStyle={{borderColor: '#C1C0B9'}}>
-                                {
-                                    tableData.map((rowData, index) => (
-                                        <Row
-                                            key={index}
-                                            data={rowData}
-                                            widthArr={state.widthArr}
-                                            style={[styles.row, index%2 && {backgroundColor: '#F7F6E7'}]}
-                                            textStyle={styles.text}
-                                        />
-                                    ))
-                                }
-                            </Table>
-                        </ScrollView>
-                    </View>
-                </ScrollView>
+
+                    <Table borderStyle={{borderWidth: 2, borderColor: '#c8e1ff'}} heightArr={[32,32]}>
+                        <Row data={state.tableHead} style={styles.head} textStyle={styles.text}/>
+                        <Rows data={state.tableData} textStyle={styles.text}/>
+                    </Table>
+
             </View>
         )
     }
