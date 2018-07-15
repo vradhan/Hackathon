@@ -15,5 +15,6 @@
     <listener>
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
+    
     <welcome-file>machine-info.xhtml</welcome-file>
 </web-app>
